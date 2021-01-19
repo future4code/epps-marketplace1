@@ -3,6 +3,10 @@ import AppBar from './components/AppBar/AppBar' //header
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components/Home'
 
+// FFFCED
+// cor do background
+// chumbo: 333D44
+// bacgrkound: FFFCED
 
 class App extends React.Component{
 	render(){
@@ -12,7 +16,6 @@ class App extends React.Component{
 				<AppBar/>
 				<Home/>
 			</div>
-			
 		)
 	}
 }
