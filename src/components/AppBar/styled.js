@@ -7,6 +7,17 @@ export const Logo = styled.img`
   object-fit: cover;
 `
 
+export const Center = styled.img`
+  margin: auto;
+  width: 500px;
+  object-fit: cover;
+  margin-bottom: 50px;
+`
+
+export const Botao = styled.button`
+  background-color: black;
+`
+
 export const StyledTypography = styled(Typography)`
 //  flex-grow: 1; //para funcionar o flex no componente envolvendo a logo, título e botão de login foi preciso tirar esse flex-grow, pois ele estava ocupando todo o espaço restante disponível do componente pai, não deixando espaço para os demais se moverem.
 `
