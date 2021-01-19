@@ -1,10 +1,17 @@
-import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import React from "react";
+// import AppBar from './components/AppBar/AppBar' //header
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme } from "@material-ui/core/styles";
+// import { ThemeProvider } from "@material-ui/core";
+import SideMenu from './components/SideMenu/SideMenu'
 
-function App() {
-	return (
-        <AppContainer />
-	)
+export default function App() {
+
+  return (
+    <div>
+      <CssBaseline/>
+        {/* <AppBar /> */} //header
+        <SideMenu />
+    </div>
+  );
 }
-
-export default App
