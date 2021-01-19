@@ -1,11 +1,10 @@
 import { AppBar, Toolbar } from '@material-ui/core';
 import Typography  from '@material-ui/core/Typography';
 import styled from 'styled-components';
-import StyledDrawer from '@material-ui/core';
 
 export const Logo = styled.img`
-  width: 100px;
-  margin-rigth: 30px;
+  width: 50px;
+  object-fit: cover;
 `
 
 export const StyledTypography = styled(Typography)`
@@ -14,13 +13,15 @@ export const StyledTypography = styled(Typography)`
 
 export const AppBarWrapper = styled(Toolbar)`
   display: flex;
-  justify-content: space-between;
 
 `
 
 export const StyledAppBar = styled(AppBar)`
-    z-index: 1201
+    z-index: 1201;
+    background-color: #FFFCED;
+    color: black;
 `
+
 
 
 

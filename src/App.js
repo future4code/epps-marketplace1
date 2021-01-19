@@ -1,17 +1,20 @@
 import React from "react";
-// import AppBar from './components/AppBar/AppBar' //header
+import AppBar from './components/AppBar/AppBar' //header
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme } from "@material-ui/core/styles";
-// import { ThemeProvider } from "@material-ui/core";
-import SideMenu from './components/SideMenu/SideMenu'
+import Home from './components/Home'
 
-export default function App() {
 
-  return (
-    <div>
-      <CssBaseline/>
-        {/* <AppBar /> */} //header
-        <SideMenu />
-    </div>
-  );
+class App extends React.Component{
+	render(){
+		return(
+			<div>
+				<CssBaseline/> 
+				<AppBar/>
+				<Home/>
+			</div>
+			
+		)
+	}
 }
+
+export default App
