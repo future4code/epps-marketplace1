@@ -11,7 +11,7 @@ export const Center = styled.img`
   margin: auto;
   width: 500px;
   object-fit: cover;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `
 
 export const Botao = styled.button`

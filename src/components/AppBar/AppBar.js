@@ -12,6 +12,7 @@ export default function ButtonAppBar() {
       <StyledAppBar>
         <AppBarWrapper>
           <Logo src={logo} />
+          {/* <Button color="inherit">Home</Button> */}
           <Button color="inherit">Cliente</Button>
           <Button color="inherit">Produtos</Button>
         </AppBarWrapper>

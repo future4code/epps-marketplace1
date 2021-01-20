@@ -7,9 +7,6 @@ import { Typography, withStyles } from '@material-ui/core';
 import CardActions from "@material-ui/core/CardActions";
 
 
-
-
-
 const styles = {
     card: {
         display: "flex",
