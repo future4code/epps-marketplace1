@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ContentCard from "./Components/ContentCard";
+import ContentCard from "./ContentCard"
 import * as CS from "./styles/ConsumerStyles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -32,7 +32,7 @@ class ConsumerPage extends React.Component {
     pickProducts = async () => {
         try {
             const res = await axios.get(`${baseURL}/products`)
-            const variedProductList = res.data.pickProducts
+            const variedProductList = res.data.products
             this.setState({ arrayProductsSt: variedProductList })
         } catch (err) {
             console.log(err)
@@ -90,7 +90,7 @@ class ConsumerPage extends React.Component {
             // forma de normalizacao NFD(para remover os acentos)
         ))
 
-        let categoryFilter = serachFilter.filter(element => (
+        let categoryFilter = searchFilter.filter(element => (
             this.state.currentCategorySt ? element.category.includes(this.state.currentCategorySt) : true
         ))
 
@@ -136,7 +136,9 @@ class ConsumerPage extends React.Component {
         }
 
         let shownProducts = orderedList.map((product, index) => (
-            <ContentCard>
+            <div>
+                {console.log(product.paymentMethod)}
+                <ContentCard
                 id={product.id}
                 key={index}
                 price={product.price}
@@ -149,39 +151,39 @@ class ConsumerPage extends React.Component {
                 productName={product.name}
                 activeCard={this.state.activeIdCard}
                 functionCardActive={this.updateCard}
-                addProduct={this.addProductToCart}
-            </ContentCard>
-        ))
+                addProduct={this.addProductToCart} 
+                /> 
+            </div>
 
+        
+        ))
         return (
             // seleção de categoria e textfield com os filtros
             <CS.Wrapper>
                 <CS.CategoryFilter>
-                    <Button onclick ={() => this.chooseCategory('Eletrônicos')} variant="contained" color="primary" size="large">Eletrônicos</Button>
-                    <Button onclick ={() => this.chooseCategory('Roupas')} variant="contained" color="primary" size="large">Roupas</Button>
-                    <Button onclick ={() => this.chooseCategory('Jogos')} variant="contained" color="primary" size="large">Jogos</Button>
+                    
                 </CS.CategoryFilter>
                 <CS.Main>
                     <CS.Container>
-                        <TextField>
+                        <TextField
                             margin="normal"
                             variant="outlined"
                             onChange={this.changeMaximumFilter}
                             value={this.state.maxFilter}
                             label="Valor Máximo:"
                             type="number"
-                        </TextField>
+                        />
 
-                        <TextField>
+                        <TextField
                             margin="normal"
                             variant="outlined"
                             onChange={this.changeMinimumFilter}
                             value={this.state.minFilter}
                             label="Valor Mínimo:"
                             type="number"
-                        </TextField>
+                        />
 
-                        <TextField>
+                        <TextField
                             select
                             onChange={this.changeOrder}
                             name="ordem"
@@ -189,7 +191,7 @@ class ConsumerPage extends React.Component {
                             value={this.state.order}
                             variant="outlined"
                             margin="normal"
-                        
+                        >
                             <option hidden value=""></option>
                             <option value="">Sem filtro</option>
                             <option value={"nameA-Z"}>Nome de (A-Z)</option>
