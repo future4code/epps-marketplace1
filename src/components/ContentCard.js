@@ -32,7 +32,7 @@ const styles = {
     },
 
     cardDetails: {
-        height: "55vh",
+        height: "1000px",
         width: "15vw"
     },
 
@@ -42,9 +42,11 @@ const styles = {
 }
 
 class ContentCard extends React.Component {
+
     constructor(props){
         super(props)
         this.state = {shownDetails: true}
+        
             
     }
 
@@ -68,57 +70,57 @@ class ContentCard extends React.Component {
         }
     }
 
+
     render(){
         const {classes} = this.props
-        return (
-            <Card
-                style={{
-                    ...styles.card,
-                    ...(this.state.shownDetails ? styles.cardDetails : {}),
-                }}>
-                <CardActionArea on click={() => this.changeStatus(this.props.id)}>
-                    <CardMedia
-                        component="img"
-                        alt="img"
-                        image={this.props.image}
-                        style={{
-                            ...styles.media,
-                            ...(this.state.shownDetails ? styles.mediaDetails : {}),
-                        }}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h4" component="h3">
-                            {this.props.productName}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <Typography component="p">
-                        {Number(this.props.price).toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
-                </Typography>
-
-                {this.state.shownDetails &&
-                    <span>
-                        <Typography component="p"><strong>Formas de Pagamento:</strong>
-                            {this.props.paymentMethod}
-                        </Typography>
-                        <Typography component="p"><strong>Descrição:</strong>
-                            {this.props.description}
-                        </Typography>
-                        <Typography component="p"><strong>Parcelado em:</strong>
-                            {this.props.installments}x
-                        </Typography>
-                    </span>   
-                }
-
-                <CardActions className={classes.button} >
-                    <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="secundary">
-                        Adicionar ao Carrinho
-                    </Button>
-                </CardActions>
-             </Card>
-
-
-        )  
+            return (
+                <Card
+                    style={{
+                        ...styles.card,
+                        ...(this.state.shownDetails ? styles.cardDetails : {}),
+                    }}>
+                    <CardActionArea on click={() => this.changeStatus(this.props.id)}>
+                        <CardMedia
+                            component="img"
+                            alt="img"
+                            image={this.props.image}
+                            style={{
+                                ...styles.media,
+                                ...(this.state.shownDetails ? styles.mediaDetails : {}),
+                            }}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h4" component="h3">
+                                {this.props.productName}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <Typography component="p">
+                            {Number(this.props.price).toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    </Typography>
+    
+                    {this.state.shownDetails &&
+                        <span>
+                            <Typography component="p"><strong>Formas de Pagamento:</strong>
+                                {this.props.paymentMethod}
+                            </Typography>
+                            <Typography component="p"><strong>Descrição:</strong>
+                                {this.props.description}
+                            </Typography>
+                            <Typography component="p"><strong>Parcelado em:</strong>
+                                {this.props.installments}x
+                            </Typography>
+                        </span>   
+                    }
+    
+                    <CardActions className={classes.button} >
+                        <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="secundary">
+                            Adicionar ao Carrinho
+                        </Button>
+                    </CardActions>
+                 </Card>
+    
+            )  
     }
 }
 
