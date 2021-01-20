@@ -31,7 +31,6 @@ class ConsumerPage extends React.Component {
         this.pickProducts()
     }
 
-
     pickProducts = async () => {
         try {
             const res = await axios.get(`${baseURL}/products`)
