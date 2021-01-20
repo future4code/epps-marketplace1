@@ -5,6 +5,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { Typography, withStyles } from '@material-ui/core';
 import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
 
 
 const styles = {
@@ -120,4 +121,4 @@ class ContentCard extends React.Component {
     }
 }
 
-export default withStyles(styles(ContentCard));
+export default withStyles(styles)(ContentCard);

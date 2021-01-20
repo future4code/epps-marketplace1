@@ -4,10 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components/Home'
 import Fornecedor from './components/Fornecedor'
 import ItemList from './components/ItemList/ItemList'
-// import Consumidor from './components/Consumidor'
 import Cart from './components/Cart'
 import { Button } from '@material-ui/core';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import ConsumerPage from './components/ConsumerPage';
 
 // FFFCED
 // cor do background
@@ -29,41 +29,59 @@ class App extends React.Component {
 
 	onClickfornecedor = () => {
 		this.setState({ pagina: 1 })
+		console.log('fornecedor')
 	}
 
 	onClickConsumidor = () => {
 		this.setState({ pagina: 2 })
+		console.log('consumidor')
 	}
 
-	render() {
-		if (this.state.pagina == 0) {
-			return (
-				<div>
-					<CssBaseline />
-					<AppBar />
-					<Home />
-					<Main>
-						<br></br>
-						<img src="https://img.icons8.com/wired/64/000000/change-user-male.png" />
-						<br></br>
-						<Button onClick={this.onClickfornecedor} variant="contained" size="small">Fornecedor</Button>
-						<br></br>
-						<img src="https://img.icons8.com/wired/64/000000/change-user-male.png" />
-						<br></br>
-						<Button onClick={this.onClickConsumidor} variant="contained" size="small">Consumidor</Button>
-					</Main>
-				</div>
-			)
-		} else if (this.state.pagina == 1) {
-			return (
-				<Fornecedor/>
-			)
-		} else if (this.state.pagina === 2) {
-			return (
-				<ItemList/>
-			)
-		}
+	onClickHome = () => {
+		this.setState({ pagina: 0 })
+		console.log('pagina home')
+	}
 
+
+	render() {
+		console.log(this.state)
+		const paginaRenderizada = () =>{
+			if (this.state.pagina === 0) {
+				return (
+					<div>
+						<CssBaseline />
+						<Home/>
+						<Main>
+							<img src="https://img.icons8.com/wired/64/000000/change-user-male.png" />
+							<Button onClick={this.onClickfornecedor} variant="contained" size="small">Fornecedor</Button>
+							<img src="https://img.icons8.com/wired/64/000000/change-user-male.png" />
+							<Button onClick={this.onClickConsumidor} variant="contained" size="small">Consumidor</Button>
+						</Main>
+					</div>
+				)
+			} else if (this.state.pagina === 1) {
+				return (
+					<div>
+						<Fornecedor/>
+					</div>
+					
+				)
+			} else if (this.state.pagina === 2) {
+				return (
+					<div>
+						<ConsumerPage/>
+					</div>
+					
+				)
+			}	
+		}
+		return(
+			<div>
+				<AppBar onClickHome={this.onClickHome} onClickfornecedor={this.onClickfornecedor} onClickConsumidor={this.onClickConsumidor}/>
+				{paginaRenderizada()}
+			</div>
+		)
+		
 	}
 }
 

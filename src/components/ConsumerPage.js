@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ContentCard from "./Components/ContentCard";
+import ContentCard from "./ContentCard";
 import * as CS from "./styles/ConsumerStyles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -90,7 +90,7 @@ class ConsumerPage extends React.Component {
             // forma de normalizacao NFD(para remover os acentos)
         ))
 
-        let categoryFilter = serachFilter.filter(element => (
+        let categoryFilter = searchFilter.filter(element => (
             this.state.currentCategorySt ? element.category.includes(this.state.currentCategorySt) : true
         ))
 
