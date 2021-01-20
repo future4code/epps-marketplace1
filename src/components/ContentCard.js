@@ -13,26 +13,27 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         textAlign: "center",
-        justficyContent: "space-between",
-        margin: "auto",
+        justifyContent: "space-between",
         width: "12vw",
         height: "30vh",
+        marginRight: "4%",
+        marginBottom: "4%",
         transition: "height 1s, width 1s, translate 2s"
     },
 
     media: {
         objectFit: "cover",
-        height: "12vh",
+        height: "10vh",
         transition: "height 1s, width 1s"
     },
 
     button: {
-        justficyContent: "center"
+        justifyContent: "center"
     },
 
     cardDetails: {
-        height: "65vh",
-        width: "25vw"
+        height: "55vh",
+        width: "15vw"
     },
 
     mediaDetails: {
@@ -43,7 +44,7 @@ const styles = {
 class ContentCard extends React.Component {
     constructor(props){
         super(props)
-        this.state = {shownDetails: false}
+        this.state = {shownDetails: true}
             
     }
 
@@ -76,7 +77,7 @@ class ContentCard extends React.Component {
                     ...(this.state.shownDetails ? styles.cardDetails : {}),
                 }}>
                 <CardActionArea on click={() => this.changeStatus(this.props.id)}>
-                    <CardMedia>
+                    <CardMedia
                         component="img"
                         alt="img"
                         image={this.props.image}
@@ -84,7 +85,7 @@ class ContentCard extends React.Component {
                             ...styles.media,
                             ...(this.state.shownDetails ? styles.mediaDetails : {}),
                         }}
-                    </CardMedia>
+                    />
                     <CardContent>
                         <Typography gutterBottom variant="h4" component="h3">
                             {this.props.productName}
@@ -97,10 +98,10 @@ class ContentCard extends React.Component {
 
                 {this.state.shownDetails &&
                     <span>
-                        <Typography component="p"><strong>Descrição:</strong>
+                        <Typography component="p"><strong>Formas de Pagamento:</strong>
                             {this.props.paymentMethod}
                         </Typography>
-                        <Typography component="p"><strong>Formas de Pagamento:</strong>
+                        <Typography component="p"><strong>Descrição:</strong>
                             {this.props.description}
                         </Typography>
                         <Typography component="p"><strong>Parcelado em:</strong>
@@ -110,9 +111,9 @@ class ContentCard extends React.Component {
                 }
 
                 <CardActions className={classes.button} >
-                <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="secundary">
-                    Adicionar ao Carrinho
-                </Button>
+                    <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="secundary">
+                        Adicionar ao Carrinho
+                    </Button>
                 </CardActions>
              </Card>
 

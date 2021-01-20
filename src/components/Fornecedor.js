@@ -61,7 +61,7 @@ export default class Consumidor extends React.Component {
             .then((respondeu) => {
                 // alert('pegou tudo com sucesso')
                 this.setState({ todosDados: respondeu.data.products })
-                console.log(respondeu.data)
+                // console.log(respondeu.data)
             })
             .catch((error) => {
                 alert('trouxe nada familia')
@@ -169,7 +169,7 @@ export default class Consumidor extends React.Component {
                     <select onChange={this.getPayment}>
                         <option value="">Selecione uma opção abaixo:</option>
                         <option value="Cartao">Cartao</option>
-                        <option value="Roupas">Boleto bancário</option>
+                        <option value="Boleto">Boleto bancário</option>
                         <option value="Paypal">Paypal</option>
                         <option value="Pix">Pix</option>
                     </select>

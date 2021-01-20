@@ -6,8 +6,8 @@ import Fornecedor from './components/Fornecedor'
 import ItemList from './components/ItemList/ItemList'
 import Cart from './components/Cart'
 import { Button } from '@material-ui/core';
-import styled from 'styled-components';
-import ConsumerPage from './components/ConsumerPage';
+import styled from 'styled-components'
+import ConsumerPage from './components/ConsumerPage'
 
 // FFFCED
 // cor do background
