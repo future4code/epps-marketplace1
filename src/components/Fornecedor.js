@@ -59,7 +59,7 @@ export default class Consumidor extends React.Component {
     getProducts = () => {
         const request = axios.get("https://us-central1-labenu-apis.cloudfunctions.net/fourUsedOne/products")
             .then((respondeu) => {
-                alert('pegou tudo com sucesso')
+                // alert('pegou tudo com sucesso')
                 this.setState({ todosDados: respondeu.data.products })
                 // console.log(respondeu.data)
             })
@@ -149,7 +149,6 @@ export default class Consumidor extends React.Component {
         return (
             <div>
                 <DivMain className="Produto">
-                    <AppBar />
                     <h1>Cadastre seu produto:</h1>
                     <p>Insira o nome do produto:</p>
                     <input onChange={this.getName} value={this.state.inputName} type="text" />
@@ -176,7 +175,6 @@ export default class Consumidor extends React.Component {
                     </select>
                     {checaMetodoPag()}
                     <button onClick={this.createProduct}>Salvar</button>
-
                     <h1>Lista dos produtos</h1>
                     {this.state.todosDados.map(p => {
                         return (

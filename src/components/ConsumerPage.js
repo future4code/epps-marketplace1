@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ContentCard from "./ContentCard"
+import ContentCard from "./ContentCard";
 import * as CS from "./styles/ConsumerStyles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
