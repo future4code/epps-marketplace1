@@ -25,10 +25,6 @@ class ConsumerPage extends React.Component {
         this.pickProducts()
     }
 
-    componentWillUnmount(){
-        this.props.search()
-    }
-
     pickProducts = async () => {
         try {
             const res = await axios.get(`${baseURL}/products`)
