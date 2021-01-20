@@ -38,6 +38,7 @@ const styles = {
 
     mediaDetails: {
         height: "30vh"
+
     }
 }
 
@@ -48,15 +49,6 @@ class ContentCard extends React.Component {
             
     }
 
-    componentDidUpdate() {
-        this.changeShownDetails()
-    }
-
-    changeShownDetails = () => {
-        if (this.props.id !== this.props.activeCard && this.state.shownDetails === true) {
-            this.setState ({ shownDetails: false})
-        }
-    }
 
     changeStatus = (id) => {
         if (this.state.shownDetails === false) {
