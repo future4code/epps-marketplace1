@@ -15,14 +15,20 @@ class ConsumerPage extends React.Component {
         this.state = {
             arrayProductsSt: [],
             currentCategorySt: "",
-            minFilter: "",
-            maxFilter: "",
+            minFilter: -Infinity,
+            maxFilter: Infinity,
             activeIdCard: "",
             order: "",
             cartOpen: true,
             cart: [],
             productSelected: {},
-            totalPrice: 0
+            totalPrice: 0,
+
+            // productCloned: {
+            //     name: "",
+            //     description: "",
+
+            // }
         }
     }
 
@@ -74,23 +80,9 @@ class ConsumerPage extends React.Component {
         this.setState({cartOpen: false})
         const copyCart = [...this.state.cart, productAdd]
         this.setState({cart: copyCart})
-
-
-        console.log(productAdd)
-
-
-
-        // const productInCart = this.state.cart.findIndex(eachProduct =>
-        //     eachProduct.id === productAdd.id)
-        // if (productInCart >-1) {
-        //     copyCart[productInCart].quantity += 1
-        // } else {
-        //     copyCart.push({
-        //         productAdd: productAdd, quantity: 1
-        //     })
-        // }
-
-
+        
+        // this.setState({name: productAdd.name})
+        // console.log(this.state.productCloned)
     }
     
     deleteProductCart = (product) => {
@@ -100,27 +92,31 @@ class ConsumerPage extends React.Component {
             let newCart = [...this.state.cart]
             const cartIndex = newCart.findIndex((item) => item.id === product.id)
             newCart.splice(cartIndex, 1)
-            this.setState({ cart: newCart })
-            console.log("newCart", newCart)
-            console.log("cartDelete", this.state.cart)
-            this.calculateTotalPrice()
+            this.setState({ cart: newCart }, () => {
+                this.calculateTotalPrice()})
+
         }}
 
     calculateTotalPrice = () => {
         let finalPrice = 0
+
+        if(this.state.cart.length !== 0){
         this.state.cart.map((product) => {
              finalPrice += Number(product.price)
             this.setState({totalPrice: finalPrice})
-            console.log("cart", this.state.cart)
-        })}
+        })} else {
+            this.setState({totalPrice: finalPrice})
+        }}
+
+        // condicional para carrinho vazio
 
     render() {
         let minimumFilter = this.state.arrayProductsSt.filter(element => (
-            this.state.minFilter ? element.price >= this.state.minFilter : true
+            this.state.minFilter ? element.price >= Number(this.state.minFilter) : true
         ))
 
         let maximumFilter = minimumFilter.filter(element => (
-            this.state.maxFilter ? element.price <= this.state.maxFilter : true
+            this.state.maxFilter ? element.price <= Number(this.state.maxFilter) : true
         ))
 
         let searchFilter = maximumFilter.filter(element => (
@@ -159,13 +155,13 @@ class ConsumerPage extends React.Component {
 
             case "ascending":
                 orderedList = categoryFilter.sort(function(x,y){
-                    return x.price < y.price ? -1 : x.price > y.price ? 1 : 0
+                    return Number(x.price) < Number(y.price) ? -1 : Number(x.price) > Number(y.price) ? 1 : 0
                 })
                 break;
 
             case "descending":
                 orderedList = categoryFilter.sort(function(x,y) {
-                    return x.price < y.price ? 1 : x.price > y.price ? -1 : 0
+                    return Number(x.price) < Number(y.price) ? 1 : Number(x.price) > Number(y.price) ? -1 : 0
                 })
                 break;
             default:
@@ -176,6 +172,7 @@ class ConsumerPage extends React.Component {
         let shownProducts = orderedList.map((product, index) => (
 
             <div>
+
                 <ContentCard
                 id={product.id}
                 key={index}
@@ -185,7 +182,7 @@ class ConsumerPage extends React.Component {
                 installments={product.installments}
                 eachProduct={product}
                 description={product.description}
-                image={product.photos[0]}
+                image={product.photos}
                 productName={product.name}
                 activeCard={this.state.activeIdCard}
                 functionCardActive={this.updateCard}
@@ -231,6 +228,9 @@ class ConsumerPage extends React.Component {
                             value={this.state.order}
                             variant="filled"
                             margin="normal"
+                            SelectProps={{
+                                native:true,
+                          }}
                         >
                             <option hidden value=""></option>
                             <option value=""></option>
