@@ -8,16 +8,16 @@ const DivMain = styled.div`
     margin: auto;
     border: 1px solid black;
     padding: 50px;
-    background-color: white; //cor dentro do fornecedor
+    background-color: #FFFCED; //cor dentro do fornecedor
     color: black;
     text-align: center;
-    font-family: 'Arial';
-
+    font-family: 'Rajdhani';
 `
 
 const DivTest = styled.div`
     background-color: #333D44;
-    font-family: 'sans-serif';
+    font-family: 'Rajdhani';
+    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png") //icones do tape
 `
 
 // const DivListaProdutos = styled.div`
