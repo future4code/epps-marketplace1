@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
+
 .App {
   text-align: center;
 }
@@ -6,6 +9,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+body{
+  font-family: 'Rajdhani', sans-serif;
+}
+
 
 
 

@@ -200,55 +200,54 @@ class ConsumerPage extends React.Component {
             return (
                 // seleção de categoria e textfield com os filtros
                 <CS.Wrapper>
-                    <CS.CategoryFilter>
-                        
-                    </CS.CategoryFilter>
-                    <CS.Main>
-                        <CS.Container>
-                            <TextField
-                                margin="normal"
-                                variant="outlined"
-                                onChange={this.changeMaximumFilter}
-                                value={this.state.maxFilter}
-                                label="Valor Máximo:"
-                                type="number"
-                            />
-    
-                            <TextField
-                                margin="normal"
-                                variant="outlined"
-                                onChange={this.changeMinimumFilter}
-                                value={this.state.minFilter}
-                                label="Valor Mínimo:"
-                                type="number"
-                            />
-    
-                            <TextField
-                                select
-                                onChange={this.changeOrder}
-                                name="ordem"
-                                label="Ordenar por"
-                                value={this.state.order}
-                                variant="outlined"
-                                margin="normal"
-                            >
-                                <option hidden value=""></option>
-                                <option value="">Sem filtro</option>
-                                <option value={"nameA-Z"}>Nome de (A-Z)</option>
-                                <option value={"nameZ-A"}>Nome de (Z-A)</option>
-                                <option value={"categoryA-Z"}>Categoria de (A-Z)</option>
-                                <option value={"categoryZ-A"}>Categoria de (Z-A)</option>
-                                <option value={"ascending"}>Menor Preço</option>
-                                <option value={"descending"}>Maior Preço</option>
-                            </TextField>
-    
-                        </CS.Container>
-                        <CS.Container2>
-                            {shownProducts}
-                        </CS.Container2>
-                    </CS.Main>
-    
-                </CS.Wrapper>
+                <CS.CategoryFilter>
+                    
+                </CS.CategoryFilter>
+                <CS.Main>
+                    <CS.Container>
+                        <TextField
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.changeMaximumFilter}
+                            value={this.state.maxFilter}
+                            label="Valor Máximo:"
+                            type="number"
+                        />
+
+                        <TextField
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.changeMinimumFilter}
+                            value={this.state.minFilter}
+                            label="Valor Mínimo:"
+                            type="number"
+                        />
+
+                        <TextField
+                            select
+                            onChange={this.changeOrder}
+                            name="ordem"
+                            label="Ordenar"
+                            value={this.state.order}
+                            variant="filled"
+                            margin="normal"
+                        >
+                            <option hidden value=""></option>
+                            <option value=""></option>
+                            <option value={"nameA-Z"}>Nome de (A-Z)</option>
+                            <option value={"nameZ-A"}>Nome de (Z-A)</option>
+                            <option value={"categoryA-Z"}>Categoria de (A-Z)</option>
+                            <option value={"categoryZ-A"}>Categoria de (Z-A)</option>
+                            <option value={"ascending"}>Menor Preço</option>
+                            <option value={"descending"}>Maior Preço</option>
+                        </TextField>
+
+                    </CS.Container>
+                    <CS.Container2>
+                        {shownProducts}
+                    </CS.Container2>
+                </CS.Main>
+            </CS.Wrapper>
             )
         } else {
             return (

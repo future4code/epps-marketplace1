@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import { Typography, withStyles } from '@material-ui/core';
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 
 const styles = {
@@ -14,31 +15,39 @@ const styles = {
         flexDirection: "column",
         textAlign: "center",
         justifyContent: "space-between",
-        width: "12vw",
+        width: "10vw",
         height: "30vh",
         marginRight: "4%",
         marginBottom: "4%",
-        transition: "height 1s, width 1s, translate 2s"
+        transition: "height 1s, width 1s, translate 2s",
+        backgroundColor: "white", //cor dentro do card
     },
 
     media: {
         objectFit: "cover",
         height: "10vh",
-        transition: "height 1s, width 1s"
+        transition: "height 1s, width 1s",
     },
 
     button: {
-        justifyContent: "center"
+        justifyContent: "center",
+        border: "1px solid black",
+        backgroundColor: "white", //cor do botao
     },
 
     cardDetails: {
-        height: "1000px",
-        width: "15vw"
+        marginTop: "100px",
+        height: "500px", //largura do card das fotos
+        width: "300px", //tamanho do card das fotos
+        objectFit: "cover",
+        marginLeft: "20px",
+        backgroundColor: "white",
     },
 
-    mediaDetails: {
-        height: "30vh"
-
+    mediaDetails: { //card das fotos
+        height: "30vh",
+        backgroundColor: "#333D44", //cor dentro do card
+        border: "10px solid white"
     }
 }
 
@@ -51,17 +60,15 @@ class ContentCard extends React.Component {
             
     }
 
-
     changeStatus = (id) => {
         if (this.state.shownDetails === false) {
-            this.setState({shownDetails:true})
+            this.setState({ shownDetails: true })
             this.props.functionCardActive(id)
         } else {
-            this.setState({shownDetails:false})
+            this.setState({ shownDetails: false })
             this.props.functionCardActive("")
         }
     }
-
 
     render(){
         const {classes} = this.props

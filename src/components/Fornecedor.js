@@ -8,11 +8,22 @@ const DivMain = styled.div`
     margin: auto;
     border: 1px solid black;
     padding: 50px;
-    margin-top: 100px;
-    background-color: white;
+    background-color: #FFFCED; //cor dentro do fornecedor
     color: black;
     text-align: center;
+    font-family: 'Rajdhani';
 `
+
+const DivTest = styled.div`
+    background-color: #333D44;
+    font-family: 'Rajdhani';
+    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png") //icones do tape
+`
+
+// const DivListaProdutos = styled.div`
+//     margin: auto;
+//     border: 1px solid black;
+// `
 
 // const DivTest = styled.div`
 //     background-color: #333D44;
@@ -27,7 +38,7 @@ export default class Consumidor extends React.Component {
         inputCategory: "",
         inputPaymentMethod: "",
         inputInstallments: 1,
-        todosDados: []
+        todosDados: [],
     };
 
     // ****************************************************** POST *************************************************
@@ -39,7 +50,7 @@ export default class Consumidor extends React.Component {
             price: this.state.inputPrice,
             paymentMethod: this.state.inputPaymentMethod,
             category: this.state.inputCategory,
-            photos: ["https://picsum.photos/300/200"],
+            photos: [''],
             installments: this.state.inputInstallments,
         }
 
@@ -129,6 +140,10 @@ export default class Consumidor extends React.Component {
         console.log(event.target.value)
     }
 
+    onChangeInputAddUrl = (event) => {
+        this.setState({ inputUrl: event.target.value })
+      };
+
     render() {
         const checaMetodoPag = () => {
             if (this.state.inputPaymentMethod === "Cartao") {
@@ -147,15 +162,18 @@ export default class Consumidor extends React.Component {
         }
 
         return (
-            <div>
+            <DivTest>
                 <DivMain className="Produto">
-                    <h1>Cadastre seu produto:</h1>
+                    <h1>Cadastre o produto:</h1>
+                    <hr></hr>
                     <p>Insira o nome do produto:</p>
                     <input onChange={this.getName} value={this.state.inputName} type="text" />
                     <p>insira uma descrição do produto:</p>
                     <input onChange={this.getDescription} value={this.state.inputDescription} type="text" />
                     <p>insira o preço de venda:</p>
                     <input onChange={this.getPrice} value={this.state.inputPrice} type="number" />
+                    {/* <p>Insira a URL do produto</p> */}
+                    {/* <input value={this.state.inputUrl} onChange={this.onChangeInputAddUrl} placeholder="URL"/> */}
                     <p>Selecione a categoria do produto:</p>
                     <select onChange={this.getCategory}>
                         <option value="">Selecione uma opção abaixo:</option>
@@ -176,16 +194,17 @@ export default class Consumidor extends React.Component {
                     {checaMetodoPag()}
                     <button onClick={this.createProduct}>Salvar</button>
                     <h1>Lista dos produtos</h1>
-                    {this.state.todosDados.map(p => {
-                        return (
-                            <div>
-                                <p>{p.name}</p>
-                                <button onClick={() => {this.deleteProduct(p.id)}}>Deletar produto</button>
-                            </div>
-                        )
-                    })}
+                    <hr></hr>
+                        {this.state.todosDados.map(p => {
+                            return (
+                                <div>
+                                    <h2>Produto: {p.name}</h2>
+                                    <button onClick={() => { this.deleteProduct(p.id) }}>Deletar produto</button>
+                                </div>
+                            )
+                        })}
                 </DivMain>
-            </div>
+            </DivTest>
         )
     }
 }

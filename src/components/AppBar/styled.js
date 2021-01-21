@@ -15,7 +15,7 @@ export const Center = styled.img`
 `
 
 export const Botao = styled.button`
-  background-color: black;
+    background-color: black;
 `
 
 export const StyledTypography = styled(Typography)`
@@ -23,7 +23,9 @@ export const StyledTypography = styled(Typography)`
 `
 
 export const AppBarWrapper = styled(Toolbar)`
-  display: flex;
+    display: flex;
+    background-color: #FFFCED; //cor do header
+    color: black;
 
 `
 
