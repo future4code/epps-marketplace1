@@ -8,11 +8,22 @@ const DivMain = styled.div`
     margin: auto;
     border: 1px solid black;
     padding: 50px;
-    margin-top: 100px;
-    background-color: white;
+    background-color: white; //cor dentro do fornecedor
     color: black;
     text-align: center;
+    font-family: 'Arial';
+
 `
+
+const DivTest = styled.div`
+    background-color: #333D44;
+    font-family: 'sans-serif';
+`
+
+// const DivListaProdutos = styled.div`
+//     margin: auto;
+//     border: 1px solid black;
+// `
 
 // const DivTest = styled.div`
 //     background-color: #333D44;
@@ -147,9 +158,10 @@ export default class Consumidor extends React.Component {
         }
 
         return (
-            <div>
+            <DivTest>
                 <DivMain className="Produto">
-                    <h1>Cadastre seu produto:</h1>
+                    <h1>Cadastre o produto:</h1>
+                    <hr></hr>
                     <p>Insira o nome do produto:</p>
                     <input onChange={this.getName} value={this.state.inputName} type="text" />
                     <p>insira uma descrição do produto:</p>
@@ -176,16 +188,19 @@ export default class Consumidor extends React.Component {
                     {checaMetodoPag()}
                     <button onClick={this.createProduct}>Salvar</button>
                     <h1>Lista dos produtos</h1>
-                    {this.state.todosDados.map(p => {
-                        return (
-                            <div>
-                                <p>{p.name}</p>
-                                <button onClick={() => {this.deleteProduct(p.id)}}>Deletar produto</button>
-                            </div>
-                        )
-                    })}
+                    <hr></hr>
+                    {/* <DivListaProdutos> */}
+                        {this.state.todosDados.map(p => {
+                            return (
+                                <div>
+                                    <h2>Produto: {p.name}</h2>
+                                    <button onClick={() => { this.deleteProduct(p.id) }}>Deletar produto</button>
+                                </div>
+                            )
+                        })}
+                    {/* </DivListaProdutos> */}
                 </DivMain>
-            </div>
+            </DivTest>
         )
     }
 }

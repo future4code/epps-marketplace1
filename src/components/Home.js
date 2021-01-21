@@ -4,28 +4,25 @@ import center from '../imagens/center.png'
 import { Center } from '../components/AppBar/styled';
 import { Button } from '@material-ui/core';
 
+
 const Main = styled.div`
-	display: flex;
+	margin-top: 100px;
 	justify-content: center;
-	/* margin-top: 200px; */
+	margin-top: 60px;
 	border: 1px solid black;
 	text-align: center;
 	background-color: #333D44;
+	padding: 50px;
 `
-
 
 class Home extends React.Component{
 
 
 	render(){
 		return(
-			<div>
 				<Main>
 					<Center src={center}/>
 				</Main>
-
-			</div>
-			
 		)
 	}
 }

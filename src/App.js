@@ -3,8 +3,6 @@ import AppBar from './components/AppBar/AppBar' //header
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components/Home'
 import Fornecedor from './components/Fornecedor'
-import ItemList from './components/ItemList/ItemList'
-import Cart from './components/Cart'
 import { Button } from '@material-ui/core';
 import styled from 'styled-components'
 import ConsumerPage from './components/ConsumerPage'
@@ -18,7 +16,15 @@ const Main = styled.div`
 	padding: 50px;
 	display: flex;
 	justify-content: center;
-	background-color: #FFFCED;
+	background-color: #FFFCED; //cor background dos icones da tela home
+`
+
+const Title = styled.div`
+	text-align: center;
+	font-size: 30px;
+	font-family: 'Rajdhani', sans-serif;
+	background-color: #FFFCED; //cor do title
+	padding: 10px;
 `
 
 class App extends React.Component {
@@ -51,6 +57,7 @@ class App extends React.Component {
 					<div>
 						<CssBaseline />
 						<Home/>
+						<Title>OLD IS COOL</Title>
 						<Main>
 							<img src="https://img.icons8.com/wired/64/000000/change-user-male.png" />
 							<Button onClick={this.onClickfornecedor} variant="contained" size="small">Fornecedor</Button>

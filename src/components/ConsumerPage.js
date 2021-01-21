@@ -25,9 +25,6 @@ class ConsumerPage extends React.Component {
         this.pickProducts()
     }
 
-    componentWillUnmount(){
-        this.props.search()
-    }
 
     pickProducts = async () => {
         try {
@@ -191,6 +188,7 @@ class ConsumerPage extends React.Component {
                             value={this.state.order}
                             variant="outlined"
                             margin="normal"
+                           
                         >
                             <option hidden value=""></option>
                             <option value="">Sem filtro</option>

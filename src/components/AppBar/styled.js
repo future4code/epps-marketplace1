@@ -24,6 +24,8 @@ export const StyledTypography = styled(Typography)`
 
 export const AppBarWrapper = styled(Toolbar)`
   display: flex;
+  background-color: #FFFCED; //cor do header
+  color: black;
 
 `
 
