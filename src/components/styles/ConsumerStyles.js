@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     align-items:center;
     padding: 1rem;
     background-color: #333D44; //div background
+    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png") //icones do tape
 `
 
 export const Main = styled.div`
