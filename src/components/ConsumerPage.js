@@ -184,14 +184,13 @@ class ConsumerPage extends React.Component {
                             select
                             onChange={this.changeOrder}
                             name="ordem"
-                            label="Ordenar por"
+                            label="Ordenar"
                             value={this.state.order}
-                            variant="outlined"
+                            variant="filled"
                             margin="normal"
-                           
                         >
                             <option hidden value=""></option>
-                            <option value="">Sem filtro</option>
+                            <option value=""></option>
                             <option value={"nameA-Z"}>Nome de (A-Z)</option>
                             <option value={"nameZ-A"}>Nome de (Z-A)</option>
                             <option value={"categoryA-Z"}>Categoria de (A-Z)</option>

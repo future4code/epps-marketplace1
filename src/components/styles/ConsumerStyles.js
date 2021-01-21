@@ -39,3 +39,5 @@ export const CategoryFilter = styled.div`
     margin-bottom: 10vh;
     border-radius: 20px;
 `
+
+

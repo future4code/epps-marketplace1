@@ -38,7 +38,7 @@ export default class Consumidor extends React.Component {
         inputCategory: "",
         inputPaymentMethod: "",
         inputInstallments: 1,
-        todosDados: []
+        todosDados: [],
     };
 
     // ****************************************************** POST *************************************************
@@ -50,7 +50,7 @@ export default class Consumidor extends React.Component {
             price: this.state.inputPrice,
             paymentMethod: this.state.inputPaymentMethod,
             category: this.state.inputCategory,
-            photos: ["https://picsum.photos/300/200"],
+            photos: [''],
             installments: this.state.inputInstallments,
         }
 
@@ -140,6 +140,10 @@ export default class Consumidor extends React.Component {
         console.log(event.target.value)
     }
 
+    onChangeInputAddUrl = (event) => {
+        this.setState({ inputUrl: event.target.value })
+      };
+
     render() {
         const checaMetodoPag = () => {
             if (this.state.inputPaymentMethod === "Cartao") {
@@ -168,6 +172,8 @@ export default class Consumidor extends React.Component {
                     <input onChange={this.getDescription} value={this.state.inputDescription} type="text" />
                     <p>insira o preço de venda:</p>
                     <input onChange={this.getPrice} value={this.state.inputPrice} type="number" />
+                    {/* <p>Insira a URL do produto</p> */}
+                    {/* <input value={this.state.inputUrl} onChange={this.onChangeInputAddUrl} placeholder="URL"/> */}
                     <p>Selecione a categoria do produto:</p>
                     <select onChange={this.getCategory}>
                         <option value="">Selecione uma opção abaixo:</option>
@@ -189,7 +195,6 @@ export default class Consumidor extends React.Component {
                     <button onClick={this.createProduct}>Salvar</button>
                     <h1>Lista dos produtos</h1>
                     <hr></hr>
-                    {/* <DivListaProdutos> */}
                         {this.state.todosDados.map(p => {
                             return (
                                 <div>
@@ -198,7 +203,6 @@ export default class Consumidor extends React.Component {
                                 </div>
                             )
                         })}
-                    {/* </DivListaProdutos> */}
                 </DivMain>
             </DivTest>
         )

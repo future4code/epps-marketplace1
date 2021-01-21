@@ -16,7 +16,7 @@ const styles = {
         textAlign: "center",
         justifyContent: "space-between",
         width: "10vw",
-        height: "10vh",
+        height: "30vh",
         marginRight: "4%",
         marginBottom: "4%",
         transition: "height 1s, width 1s, translate 2s",
@@ -120,7 +120,7 @@ class ContentCard extends React.Component {
                 }
 
                 <CardActions className={classes.button} >
-                    <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="primary">
+                    <Button onClick={() => this.props.addProduct(this.props.Cart)} size="small" color="primary">
                     Adicionar ao Carrinho
                     </Button>
                 </CardActions>
