@@ -17,7 +17,7 @@ const DivMain = styled.div`
 const DivTest = styled.div`
     background-color: #333D44;
     font-family: 'Rajdhani';
-    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png") //icones do tape
+    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png"); //icones do tape
 `
 
 // const DivListaProdutos = styled.div`
@@ -32,7 +32,7 @@ const DivTest = styled.div`
 export default class Consumidor extends React.Component {
     state = {
         inputName: "",
-        imputImage: [],
+        inputImage: [],
         inputDescription: "",
         inputPrice: "",
         inputCategory: "",
@@ -50,7 +50,7 @@ export default class Consumidor extends React.Component {
             price: this.state.inputPrice,
             paymentMethod: this.state.inputPaymentMethod,
             category: this.state.inputCategory,
-            photos: [''],
+            photos: [this.state.inputImage],
             installments: this.state.inputInstallments,
         }
 
@@ -60,7 +60,7 @@ export default class Consumidor extends React.Component {
                 this.getProducts()
             })
             .catch((erro) => {
-                alert("Não foi possivel cadastrar o produto!")
+                alert("Não foi possivel cadastrar o produto!" + erro.message)
 
             })
     }
@@ -140,10 +140,6 @@ export default class Consumidor extends React.Component {
         console.log(event.target.value)
     }
 
-    onChangeInputAddUrl = (event) => {
-        this.setState({ inputUrl: event.target.value })
-      };
-
     render() {
         const checaMetodoPag = () => {
             if (this.state.inputPaymentMethod === "Cartao") {
@@ -172,8 +168,8 @@ export default class Consumidor extends React.Component {
                     <input onChange={this.getDescription} value={this.state.inputDescription} type="text" />
                     <p>insira o preço de venda:</p>
                     <input onChange={this.getPrice} value={this.state.inputPrice} type="number" />
-                    {/* <p>Insira a URL do produto</p> */}
-                    {/* <input value={this.state.inputUrl} onChange={this.onChangeInputAddUrl} placeholder="URL"/> */}
+                    <p>Insira a URL do produto</p>
+                    <input value={this.state.inputImage} onChange={this.getImage} placeholder="URL"/>
                     <p>Selecione a categoria do produto:</p>
                     <select onChange={this.getCategory}>
                         <option value="">Selecione uma opção abaixo:</option>
