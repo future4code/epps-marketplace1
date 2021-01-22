@@ -11,7 +11,6 @@ const baseURL = `https://us-central1-labenu-apis.cloudfunctions.net/fourUsedOne`
 
 const DivBotaoVoltar = styled.div`
     display: flex;
-    margin-top: 100px;
     justify-content: flex-end;
     padding: 50px;
 `
