@@ -4,10 +4,17 @@ import ContentCard from "./ContentCard";
 import * as CS from "./styles/ConsumerStyles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Cart from './Cart'
+import Cart from './Cart';
+import styled from 'styled-components';
 
 const baseURL = `https://us-central1-labenu-apis.cloudfunctions.net/fourUsedOne`
 
+const DivBotaoVoltar = styled.div`
+    display: flex;
+    margin-top: 100px;
+    justify-content: flex-end;
+    padding: 50px;
+`
 
 class ConsumerPage extends React.Component {
     constructor(props) {
@@ -23,12 +30,6 @@ class ConsumerPage extends React.Component {
             cart: [],
             productSelected: {},
             totalPrice: 0,
-
-            // productCloned: {
-            //     name: "",
-            //     description: "",
-
-            // }
         }
     }
 
@@ -80,9 +81,6 @@ class ConsumerPage extends React.Component {
         this.setState({cartOpen: false})
         const copyCart = [...this.state.cart, productAdd]
         this.setState({cart: copyCart})
-        
-        // this.setState({name: productAdd.name})
-        // console.log(this.state.productCloned)
     }
     
     deleteProductCart = (product) => {
@@ -258,11 +256,14 @@ class ConsumerPage extends React.Component {
                     totalPrice={this.state.totalPrice}
                     calculateTotalPrice={this.calculateTotalPrice}
                     />
-                    <button onClick={this.cartClose}>Continuar comprando</button>
+                    <DivBotaoVoltar>
+                        <img src="https://img.icons8.com/wired/64/000000/double-left.png"/>
+                        <Button onClick={this.cartClose} size="large" variant="contained" color="disabled">Continuar comprando</Button>
+                    </DivBotaoVoltar>
                 </div>
             )}}
 }
 
-
-
 export default ConsumerPage;
+
+

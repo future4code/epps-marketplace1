@@ -1,33 +1,24 @@
 import React from "react";
 import axios from "axios";
 import styled from 'styled-components'
-import AppBar from './AppBar/AppBar' //header
+import Button from '@material-ui/core/Button';
 
-const DivMain = styled.div`
-    width: 500px;
+const Box = styled.div`
     margin: auto;
-    border: 1px solid black;
+    width: 600px;
     padding: 50px;
     background-color: #FFFCED; //cor dentro do fornecedor
+    font-family: 'Abel', sans-serif;
     color: black;
     text-align: center;
-    font-family: 'Rajdhani';
+    
 `
 
-const DivTest = styled.div`
+const Main = styled.div` //div background do fornecedor
     background-color: #333D44;
-    font-family: 'Rajdhani';
-    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png"); //icones do tape
+    font-family: 'Abel', sans-serif;
+    /* background-image: url("https://img.icons8.com/ios-filled/50/000000/lo-fi.png"); //icones do tape */
 `
-
-// const DivListaProdutos = styled.div`
-//     margin: auto;
-//     border: 1px solid black;
-// `
-
-// const DivTest = styled.div`
-//     background-color: #333D44;
-// `
 
 export default class Consumidor extends React.Component {
     state = {
@@ -58,6 +49,7 @@ export default class Consumidor extends React.Component {
             .then((resposta) => {
                 alert("Produto cadastrado com suceso!")
                 this.getProducts()
+                this.setState({inputName: '', inputImage: '', inputDescription: '', inputPrice: '', inputCategory: '', inputPaymentMethod: '', inputInstallments: ''})
             })
             .catch((erro) => {
                 alert("Não foi possivel cadastrar o produto!" + erro.message)
@@ -158,19 +150,19 @@ export default class Consumidor extends React.Component {
         }
 
         return (
-            <DivTest>
-                <DivMain className="Produto">
+            <Main>
+                <Box className="Produto">
                     <h1>Cadastre o produto:</h1>
                     <hr></hr>
-                    <p>Insira o nome do produto:</p>
-                    <input onChange={this.getName} value={this.state.inputName} type="text" />
-                    <p>insira uma descrição do produto:</p>
-                    <input onChange={this.getDescription} value={this.state.inputDescription} type="text" />
-                    <p>insira o preço de venda:</p>
-                    <input onChange={this.getPrice} value={this.state.inputPrice} type="number" />
-                    <p>Insira a URL do produto</p>
+                    <h2>Nome do produto:</h2>
+                    <input onChange={this.getName} value={this.state.inputName} type="text" placeholder="insira o nome do produto"/>
+                    <h2>Descrição do produto:</h2>
+                    <input onChange={this.getDescription} value={this.state.inputDescription} type="text" placeholder="insira a descrição"/>
+                    <h2>Preço de venda:</h2>
+                    <input onChange={this.getPrice} value={this.state.inputPrice} type="number" placeholder="insira preço do produto"/>
+                    <h2>URL do produto</h2>
                     <input value={this.state.inputImage} onChange={this.getImage} placeholder="URL"/>
-                    <p>Selecione a categoria do produto:</p>
+                    <h2>Categoria do produto:</h2>
                     <select onChange={this.getCategory}>
                         <option value="">Selecione uma opção abaixo:</option>
                         <option value="Roupas">Roupas</option>
@@ -188,19 +180,22 @@ export default class Consumidor extends React.Component {
                         <option value="Pix">Pix</option>
                     </select>
                     {checaMetodoPag()}
-                    <button onClick={this.createProduct}>Salvar</button>
+                    <br/>
+                    <br/>
+                    <Button onClick={this.createProduct} size="medium" variant="contained" color="default">Salvar</Button>
+                    <hr/>
                     <h1>Lista dos produtos</h1>
                     <hr></hr>
                         {this.state.todosDados.map(p => {
                             return (
                                 <div>
                                     <h2>Produto: {p.name}</h2>
-                                    <button onClick={() => { this.deleteProduct(p.id) }}>Deletar produto</button>
+                                    <Button onClick={() => { this.deleteProduct(p.id) }} size="small" variant="outlined" color="secondary">Deletar produto</Button>
                                 </div>
                             )
                         })}
-                </DivMain>
-            </DivTest>
+                </Box>
+            </Main>
         )
     }
 }

@@ -1,61 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from '@material-ui/core';
 
-
-const Title = styled.div`
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    font-size: 3.5rem;
-    margin: 4vh;
-`
 
 const ProductBox = styled.div`
-    display: flex;
-    width: 50vw;
-    justify-content: center;
-    align-items: center;
     margin: auto;
 `
 
-const Item = styled.p`
-    margin-right: 4vw;
-    font-weight: bold;
-`
-
-const Quantity = styled.p`
-    margin-right: 2vw;
-`
-
-const Button = styled.button`
-    height: 1rem;
-    width: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 2vw;
-    cursor: pointer;
-`
-
-const Delete = styled.button`
-    color: red;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-`
-
-const Price = styled.p`
+const Box = styled.div`
     margin: auto;
-    display: flex;
-    justify-content: center;
-    margin: 4vh;
+    width: 500px;
+    margin-top: 8vh;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 20px;
+    background-color: #FFFCED; //cor de fundo do box
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    border: 10px solid #FFFCED;
+    height: 80vh;
+    border: 1px solid black;
 `
 
-const Final = styled.button`
-    margin: auto;
+const Main = styled.div`
     display: flex;
     justify-content: center;
-    cursor: pointer;
+    border: 1px solid black;
+    background-color: #333D44; //background da tela
+    height: 80vh;
+    /* background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png"); //icones do tape */
 `
 
 export default class Cart extends React.Component {
@@ -64,39 +37,27 @@ export default class Cart extends React.Component {
         this.props.calculateTotalPrice()
     }
 
-    
-    // addQuantity = (product) => {
-    //     let add = product.quantity ++
-    //     this.setState({quantity: add})
-    //     this.calculateTotalPrice()
-    // }
-
-    // decreaseQuantity = (product) => {
-    //     if(product.quantity > 0) {
-    //         let sub = product.quantity --
-    //         this.setState({quantity: sub})
-    //         this.calculateTotalPrice()
-    //     }}
-
     render() {
       let cartList = this.props.cart.map((product) => {
             return(
                 <ProductBox>
-                    <Item>{product.name}</Item>
-                    <Item>R$ {product.price}</Item>
-                    {/* <Button onClick={() => this.addQuantity(product)}>+</Button> */}
-                    {/* <Quantity>Quantidade: {product.quantity}</Quantity> */}
-                    {/* <Button onClick={() => this.decreaseQuantity(product)}>-</Button> */}
-                    <Delete onClick={() => this.props.deleteProductCart(product)}> Retirar item do carrinho</Delete>
+                    <h2>{product.name}</h2>
+                    <h2>R$ {product.price}</h2>
+                    <Button onClick={() => this.props.deleteProductCart(product)} size="small" variant="outlined" color="secondary">Remover</Button>
                 </ProductBox>
             )})
         return(
-            <div>
-                <Title>Produtos do carrinho:</Title>
+            <Main>
+                <Box>
+                <img src="https://img.icons8.com/pastel-glyph/50/000000/shopping-cart--v2.png"/>
+                <h1>Produtos no carrinho:</h1>
                 {cartList}
-                <Price>Preço total: {this.props.totalPrice} </Price>
-                <Final>Finalizar Compra</Final>
-            </div>
+                <hr/>
+                <h2>Preço total: R$ {this.props.totalPrice}</h2>
+                <Button size="small" variant="outlined" color="disabled">Finalizar Compra</Button>
+                </Box>
+            </Main>
         )
     }
 }
+
