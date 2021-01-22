@@ -5,9 +5,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { Typography, withStyles } from '@material-ui/core';
 import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { PlayCircleFilledWhite } from '@material-ui/icons';
-
+import Button from '@material-ui/core/Button';
 
 const styles = {
     card: {
@@ -31,7 +31,6 @@ const styles = {
 
     button: {
         justifyContent: "center",
-        border: "1px solid black",
         backgroundColor: "white", //cor do botao
     },
 
@@ -53,11 +52,11 @@ const styles = {
 
 class ContentCard extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state = {shownDetails: true}
-        
-            
+        this.state = { shownDetails: true }
+
+
     }
 
     changeStatus = (id) => {
@@ -70,57 +69,60 @@ class ContentCard extends React.Component {
         }
     }
 
-    render(){
-        const {classes} = this.props
-            return (
-                <Card
-                    style={{
-                        ...styles.card,
-                        ...(this.state.shownDetails ? styles.cardDetails : {}),
-                    }}>
-                    <CardActionArea on click={() => this.changeStatus(this.props.id)}>
-                        <CardMedia
-                            component="img"
-                            alt="img"
-                            image={this.props.image}
-                            style={{
-                                ...styles.media,
-                                ...(this.state.shownDetails ? styles.mediaDetails : {}),
-                            }}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h4" component="h3">
-                                {this.props.productName}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <Typography component="p">
-                            {Number(this.props.price).toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
-                    </Typography>
-    
-                    {this.state.shownDetails &&
-                        <span>
-                            <Typography component="p"><strong>Formas de Pagamento:</strong>
-                                {this.props.paymentMethod}
-                            </Typography>
-                            <Typography component="p"><strong>Descrição:</strong>
-                                {this.props.description}
-                            </Typography>
-                            <Typography component="p"><strong>Parcelado em:</strong>
-                                {this.props.installments}x
-                            </Typography>
-                        </span>   
-                    }
-    
-                    <CardActions className={classes.button} >
-                        <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="small" color="secundary">
-                            Adicionar ao Carrinho
-                        </Button>
-                    </CardActions>
-                 </Card>
-    
-            )  
+    render() {
+        const { classes } = this.props
+        return (
+            <Card
+                style={{
+                    ...styles.card,
+                    ...(this.state.shownDetails ? styles.cardDetails : {}),
+                }}>
+                <CardActionArea on click={() => this.changeStatus(this.props.id)}>
+                    <CardMedia
+                        component="img"
+                        alt="img"
+                        image={this.props.image}
+                        style={{
+                            ...styles.media,
+                            ...(this.state.shownDetails ? styles.mediaDetails : {}),
+                        }}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h6" component="h3">
+                           {this.props.productName}
+                           <hr/>
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <Typography component="p">
+                    {Number(this.props.price).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                </Typography>
+
+                {this.state.shownDetails &&
+                    <span>
+                        <Typography component="p"><strong>Formas de Pagamento: </strong>
+                            {this.props.paymentMethod}
+                        </Typography>
+                        <Typography component="p"><strong>Descrição: </strong>
+                            {this.props.description}
+                        </Typography>
+                        <Typography component="p"><strong>Parcelado em: </strong>
+                            {this.props.installments}x
+                        </Typography>
+                    </span>
+                }
+
+                <CardActions className={classes.button} >
+                    <div>
+                        <Button onClick={() => this.props.addProduct(this.props.eachProduct)} size="size" variant="contained" color="disabled">Adicionar ao Carrinho</Button>
+                        <img src="https://img.icons8.com/ios/26/000000/shopping-cart.png"/>
+                    </div>
+                </CardActions>
+            </Card>
+
+        )
     }
 }
 
 export default withStyles(styles)(ContentCard);
+

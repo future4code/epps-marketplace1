@@ -5,14 +5,14 @@ export const Wrapper = styled.div`
     display:flex;
     align-items:center;
     padding: 1rem;
-    background-color: #333D44; //div background
-    background-image: url("https://img.icons8.com/dotty/80/000000/tape-drive.png") //icones do tape
+    background-color: #FFFCED; //div background
+    /* background-image: url("https://img.icons8.com/ios-filled/50/ffffff/tape-drive.png") //icones do tape */
 `
 
-export const Main = styled.div`
+export const Main = styled.div` //div da lista dos produtos
     display: grid;
     grid-template-columns: 25vw 75vw;
-    background-color: "333D44"; //div background produtos
+    background-color: #FFFCED; //div background produtos
 `
 
 export const Container = styled.div`
@@ -23,6 +23,7 @@ export const Container = styled.div`
     margin-top: 10%;
     margin-top: 50px;
     background-color: #FFFCED; //cor do filtro
+
 `
 
 export const Container2 = styled.div`
@@ -39,6 +40,7 @@ export const CategoryFilter = styled.div`
     padding: 1vw 1vh;
     margin-bottom: 10vh;
     border-radius: 20px;
+    
 `
 
 
