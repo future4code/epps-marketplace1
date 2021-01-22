@@ -18,7 +18,7 @@ const Box = styled.div`
     color: black;
     text-align: center;
     border: 10px solid #FFFCED;
-    height: 80vh;
+    min-height: 80vh;
     border: 1px solid black;
 `
 
