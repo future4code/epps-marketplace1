@@ -1,0 +1,13 @@
+.container-item{
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    border: 1px solid black;
+
+}
+.container-item-image{
+    padding: 20px;
+}
+.container-item-description{
+    margin-left: 40px;
+}
